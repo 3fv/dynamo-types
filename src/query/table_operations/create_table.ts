@@ -3,7 +3,7 @@ import * as Metadata from "../../metadata";
 import { DynamoDB } from "aws-sdk";
 import * as _ from "lodash";
 
-export async function createTable(metadata: Metadata.Table.Metadata) {
+export function createTableParams(metadata: Metadata.Table.Metadata) {
   let KeySchema: DynamoDB.Types.KeySchema;
   let AttributeDefinitions: DynamoDB.Types.AttributeDefinitions;
 
@@ -140,6 +140,12 @@ export async function createTable(metadata: Metadata.Table.Metadata) {
     BillingMode: "PAY_PER_REQUEST"
     // StreamSpecification?: StreamSpecification;
   };
+
+  return params;
+}
+
+export async function createTable(metadata: Metadata.Table.Metadata) {
+  const params = createTableParams(metadata);
 
   const res = await metadata.connection.client.createTable(params).promise();
 

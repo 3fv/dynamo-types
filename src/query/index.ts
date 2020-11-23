@@ -12,5 +12,6 @@ export { Writer } from "./writer";
 import * as TableOperations from "./table_operations";
 export { TableOperations };
 
+export {createTable, createTableParams} from "./table_operations";
 export * from "./expressions/conditions";
 export * from "./expressions/update";

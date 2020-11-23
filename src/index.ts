@@ -8,6 +8,7 @@ import * as Metadata from "./metadata";
 import * as Query from "./query";
 import { Table } from "./table";
 
+
 export {
   Query,
   Config,
