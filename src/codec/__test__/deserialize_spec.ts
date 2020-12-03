@@ -3,10 +3,10 @@ import { expect } from "chai";
 import * as Metadata from "../../metadata";
 import { deserialize, unmarshal } from "../deserialize";
 
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 
 // tslint:disable:max-classes-per-file
-class Card extends Table {
+class Card extends BaseTable {
   public id: number;
 }
 (Card as any).metadata = {
@@ -24,7 +24,7 @@ class Card extends Table {
   },
 };
 
-class Falsy extends Table {
+class Falsy extends BaseTable {
   public foo: number;
   public bar: boolean;
   public baz: null;

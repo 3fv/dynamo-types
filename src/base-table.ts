@@ -4,7 +4,7 @@ import * as Metadata from "./metadata";
 import * as Query from "./query";
 import { Conditions } from "./query/expressions/conditions";
 
-export class Table {
+export class BaseTable {
   // This will be setted by Decorator
   public static get metadata() {
     if (!(this as any).__metadata) {
@@ -27,7 +27,7 @@ export class Table {
   // raw storage for all attributes this record (instance) has
   private __attributes: { [key: string]: any } = {}; // tslint:disable-line
 
-  private __writer: Query.Writer<Table>; // tslint:disable-line
+  private __writer: Query.Writer<BaseTable>; // tslint:disable-line
 
   public getAttribute(name: string) {
     return this.__attributes[name];
@@ -46,11 +46,11 @@ export class Table {
   }
   private get writer() {
     if (!this.__writer) {
-      this.__writer = new Query.Writer(this.constructor as ITable<Table>);
+      this.__writer = new Query.Writer(this.constructor as ITable<BaseTable>);
     }
     return this.__writer;
   }
-  public async save<T extends Table>(
+  public async save<T extends BaseTable>(
     this: T,
     options?: Partial<{
       condition?: Conditions<T> | Array<Conditions<T>>;
@@ -58,7 +58,7 @@ export class Table {
   ) {
     return await this.writer.put(this, options);
   }
-  public async delete<T extends Table>(
+  public async delete<T extends BaseTable>(
     this: T,
     options?: Partial<{
       condition?: Conditions<T> | Array<Conditions<T>>;
@@ -72,7 +72,7 @@ export class Table {
   }
 }
 
-export interface ITable<T extends Table> {
+export interface ITable<T extends BaseTable> {
   metadata: Metadata.Table.Metadata;
   new(): T;
 }

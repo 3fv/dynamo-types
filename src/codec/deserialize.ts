@@ -4,11 +4,11 @@ import {
   Attribute as AttributeMetadata,
   Table as TableMetadata,
 } from "../metadata";
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 import * as AttributeValue from "./attribute_value";
 
-export function deserialize<T extends Table>(
+export function deserialize<T extends BaseTable>(
   tableClass: ITable<T>,
   dynamoAttributes: DynamoDB.DocumentClient.AttributeMap,
 ): T {
@@ -28,7 +28,7 @@ export function deserialize<T extends Table>(
   return record;
 }
 
-export function unmarshal<T extends Table>(
+export function unmarshal<T extends BaseTable>(
   tableClass: ITable<T>,
   dynamoAttributes: DynamoDB.AttributeMap,
 ): T {

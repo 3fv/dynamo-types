@@ -2,7 +2,7 @@ import { DynamoDB } from "aws-sdk";
 
 import * as Codec from "../codec";
 import * as Metadata from "../metadata";
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 import { batchGetFull, batchGetTrim } from "./batch_get";
 import { batchWrite } from "./batch_write";
@@ -11,7 +11,7 @@ import { Conditions } from "./expressions/conditions";
 import { buildCondition, buildUpdate } from "./expressions/transformers";
 import { UpdateChanges } from "./expressions/update";
 
-export class HashPrimaryKey<T extends Table, HashKeyType> {
+export class HashPrimaryKey<T extends BaseTable, HashKeyType> {
   constructor(
     readonly tableClass: ITable<T>,
     readonly metadata: Metadata.Indexes.HashPrimaryKeyMetadata,

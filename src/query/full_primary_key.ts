@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 import * as Codec from "../codec";
 import * as Metadata from "../metadata";
@@ -17,7 +17,7 @@ const HASH_VALUE_REF = ":hkv";
 
 const RANGE_KEY_REF = "#rk";
 
-export class FullPrimaryKey<T extends Table, HashKeyType, RangeKeyType> {
+export class FullPrimaryKey<T extends BaseTable, HashKeyType, RangeKeyType> {
   constructor(
     readonly tableClass: ITable<T>,
     readonly metadata: Metadata.Indexes.FullPrimaryKeyMetadata,

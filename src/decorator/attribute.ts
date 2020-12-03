@@ -1,11 +1,11 @@
 import "reflect-metadata";
 
 import { Attribute as AttributeMetadata } from "../metadata";
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 // Table Decorator
 export function Attribute<T>(options: { name?: string, timeToLive?: true } = {}) {
-  return (record: Table, propertyName: string) => {
+  return (record: BaseTable, propertyName: string) => {
     const tableClass = (record.constructor as ITable<any>);
     const nativeType = Reflect.getMetadata("design:type", record, propertyName);
 

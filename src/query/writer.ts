@@ -1,7 +1,7 @@
 // Since in DyanmoDB writing is free from any kind index or what soever
 // whole "writing" operations are bundled into one here
 
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 import * as Codec from "../codec";
 import * as Metadata from "../metadata";
@@ -10,7 +10,7 @@ import { batchWrite } from "./batch_write";
 import { Conditions } from "./expressions/conditions";
 import { buildCondition } from "./expressions/transformers";
 
-export class Writer<T extends Table> {
+export class Writer<T extends BaseTable> {
   constructor(private tableClass: ITable<T>) {
   }
 
@@ -64,7 +64,7 @@ export class Writer<T extends Table> {
   }
 }
 
-function KeyFromRecord<T extends Table>(
+function KeyFromRecord<T extends BaseTable>(
   record: T,
   metadata: Metadata.Indexes.FullPrimaryKeyMetadata | Metadata.Indexes.HashPrimaryKeyMetadata,
 ) {

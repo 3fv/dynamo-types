@@ -11,11 +11,11 @@ import * as Query from "../index";
 import * as TableOperations from "../table_operations";
 import { Writer } from "../writer";
 
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 import { AttributeNotExists, GreaterThan } from "../index";
 
 @TableDecorator({ name: "prod-Card4" })
-class Card extends Table {
+class Card extends BaseTable {
   @FullPrimaryKeyDecorator("i", "t")
   public static readonly primaryKey: Query.FullPrimaryKey<Card, number, string>;
 

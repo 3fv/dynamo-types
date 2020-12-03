@@ -4,7 +4,7 @@ import * as _ from "lodash";
 import { toJS } from "../../__test__/helper";
 
 import * as Metadata from "../../metadata";
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 
 import { HashPrimaryKey } from "../hash_primary_key";
 
@@ -19,7 +19,7 @@ import * as Query from "../index";
 
 describe("HashPrimaryKey", () => {
   @TableDecorator({ name: "prod-card3" })
-  class Card extends Table {
+  class Card extends BaseTable {
     @HashPrimaryKeyDecorator("id")
     public static readonly primaryKey: Query.HashPrimaryKey<Card, number>;
 

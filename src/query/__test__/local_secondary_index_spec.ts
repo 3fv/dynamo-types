@@ -1,13 +1,13 @@
 import { expect } from "chai";
 
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 
 import * as Decorator from "../../decorator";
 
 import * as Query from "../index";
 
 @Decorator.Table({ name: "prod-Card-3" })
-class Card extends Table {
+class Card extends BaseTable {
   @Decorator.FullPrimaryKey("id", "title")
   public static readonly primaryKey: Query.FullPrimaryKey<Card, number, string>;
 

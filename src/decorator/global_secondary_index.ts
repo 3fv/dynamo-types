@@ -1,4 +1,4 @@
-import { ITable } from "../table";
+import { ITable } from "../base-table";
 
 export function FullGlobalSecondaryIndex(hashKeyName: string, rangeKeyName: string, options: { name?: string; } = {}) {
   return (tableClass: ITable<any>, propertyName: string) => {

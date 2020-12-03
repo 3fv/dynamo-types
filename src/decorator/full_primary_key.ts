@@ -1,4 +1,4 @@
-import { ITable } from "../table";
+import { ITable } from "../base-table";
 
 export function FullPrimaryKey(hashKeyName: string, rangeKeyName: string) {
   return (tableClass: ITable<any>, propertyKey: string) => {

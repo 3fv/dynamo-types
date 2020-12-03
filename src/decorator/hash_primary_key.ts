@@ -1,4 +1,4 @@
-import { ITable } from "../table";
+import { ITable } from "../base-table";
 
 export function HashPrimaryKey(hashKeyName: string) {
   return (tableClass: ITable<any>, propertyKey: string) => {

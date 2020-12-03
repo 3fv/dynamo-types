@@ -1,31 +1,38 @@
 import { expect } from "chai";
 
 import {
-  Decorator,
+  Attribute,
+  FullPrimaryKey,
+  HashGlobalSecondaryIndex,
+  Table, Writer
+} from "../decorator";
+import {
+  BaseTable,
+} from "../index";
+import {
   Query,
-  Table,
 } from "../index";
 import { toJS } from "./helper";
 
 describe("Table", () => {
-  @Decorator.Table({ name: `prod-Card${Math.random()}` })
-  class Card extends Table {
-    @Decorator.FullPrimaryKey("id", "title")
+  @Table({ name: `prod-Card${Math.random()}` })
+  class Card extends BaseTable {
+    @FullPrimaryKey("id", "title")
     public static readonly primaryKey: Query.FullPrimaryKey<Card, number, string>;
 
-    @Decorator.HashGlobalSecondaryIndex("title")
+    @HashGlobalSecondaryIndex("title")
     public static readonly titleIndex: Query.HashGlobalSecondaryIndex<Card, string>;
 
-    @Decorator.Writer()
+    @Writer()
     public static readonly writer: Query.Writer<Card>;
 
-    @Decorator.Attribute()
+    @Attribute()
     public id: number;
 
-    @Decorator.Attribute()
+    @Attribute()
     public title: string;
 
-    @Decorator.Attribute({ timeToLive: true })
+    @Attribute({ timeToLive: true })
     public expiresAt: number;
   }
 

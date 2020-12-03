@@ -1,5 +1,5 @@
 import * as Query from "../query";
-import { ITable } from "../table";
+import { ITable } from "../base-table";
 
 // Writer is pretty much "Helper" method.
 // You can still create writer without this decorator,

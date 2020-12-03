@@ -7,10 +7,10 @@ import { Writer as WriterDecorator } from "../writer";
 
 import * as Query from "../../query";
 
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 
 @TableDecorator({ name: "prod-Card1" })
-class Card extends Table {
+class Card extends BaseTable {
   @FullPrimaryKeyDecorator("id", "title")
   public static readonly primaryKey: Query.FullPrimaryKey<Card, number, string>;
 

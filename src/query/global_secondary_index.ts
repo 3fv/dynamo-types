@@ -1,6 +1,6 @@
 import { DynamoDB } from "aws-sdk";
 
-import { ITable, Table } from "../table";
+import { ITable, BaseTable } from "../base-table";
 
 import * as Codec from "../codec";
 import * as Metadata from "../metadata";
@@ -12,7 +12,7 @@ const HASH_VALUE_REF = ":hkv";
 const RANGE_KEY_REF = "#rk";
 
 // tslint:disable:max-classes-per-file
-export class FullGlobalSecondaryIndex<T extends Table, HashKeyType, RangeKeyType> {
+export class FullGlobalSecondaryIndex<T extends BaseTable, HashKeyType, RangeKeyType> {
   constructor(
     readonly tableClass: ITable<T>,
     readonly metadata: Metadata.Indexes.FullGlobalSecondaryIndexMetadata,
@@ -98,7 +98,7 @@ export class FullGlobalSecondaryIndex<T extends Table, HashKeyType, RangeKeyType
   }
 }
 
-export class HashGlobalSecondaryIndex<T extends Table, HashKeyType> {
+export class HashGlobalSecondaryIndex<T extends BaseTable, HashKeyType> {
   constructor(
     readonly tableClass: ITable<T>,
     readonly metadata: Metadata.Indexes.HashGlobalSecondaryIndexMetadata,

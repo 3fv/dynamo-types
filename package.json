@@ -1,5 +1,5 @@
 {
-  "name": "dynamo-types",
+  "name": "@invisit/dynamo-types",
   "version": "2.10.1",
   "description": "DynamoDB ORM for Typescript",
   "main": "./dst/index.js",
@@ -14,6 +14,9 @@
     "prepublishOnly": "npm run build",
     "lint": "tslint -c tslint.json 'src/**/*.ts'"
   },
+  "publishConfig": {
+    "access": "restricted"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/balmbees/dynamo-types.git"
@@ -24,9 +27,9 @@
   "author": "Kurt Lee",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/balmbees/dynamo-types/issues"
+    "url": "https://github.com/invisit/dynamo-types/issues"
   },
-  "homepage": "https://github.com/balmbees/dynamo-types#readme",
+  "homepage": "https://github.com/invisit/dynamo-types#readme",
   "devDependencies": {
     "@types/chai": "4.2.14",
     "@types/faker": "4.1.12",

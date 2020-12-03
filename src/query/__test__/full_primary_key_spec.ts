@@ -2,7 +2,7 @@ import { expect } from "chai";
 import { toJS } from "../../__test__/helper";
 
 import * as Metadata from "../../metadata";
-import { Table } from "../../table";
+import { BaseTable } from "../../base-table";
 
 import { FullPrimaryKey } from "../full_primary_key";
 
@@ -19,7 +19,7 @@ import * as Query from "../index";
 describe("FullPrimaryKey", () => {
 
   @TableDecorator({ name: "prod-Card2" })
-  class Card extends Table {
+  class Card extends BaseTable {
     @FullPrimaryKeyDecorator("id", "title")
     public static readonly primaryKey: Query.FullPrimaryKey<Card, number, string>;
 

@@ -1,6 +1,6 @@
+import { BaseTable as TableClass, ITable } from "../base-table";
 import * as Metadata from "../metadata";
 import * as Query from "../query";
-import { ITable, Table as TableClass } from "../table";
 
 import Config from "../config";
 import { Connection } from "../connections";
